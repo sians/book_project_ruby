@@ -4,8 +4,8 @@ dir = File.dirname(__FILE__)
 db = SQLite3::Database.new(File.join(dir, "db/books.db"))
 
 db.execute('DROP TABLE IF EXISTS `books`;')
-db.execute('DROP TABLE IF EXISTS `posts`;')
-create_statement = "
+db.execute('DROP TABLE IF EXISTS `users`;')
+create_books = "
 CREATE TABLE `books` (
   `id`  INTEGER PRIMARY KEY AUTOINCREMENT,
   `title` TEXT,
@@ -15,4 +15,12 @@ CREATE TABLE `books` (
   `read`  INTEGER,
   `date_read`  INTEGER
 );"
-db.execute(create_statement)
+create_users = "
+CREATE TABLE `users` (
+  `id`  INTEGER PRIMARY KEY AUTOINCREMENT,
+  `username` TEXT,
+  `password` TEXT,
+  `role` TEXT
+);"
+db.execute(create_books)
+db.execute(create_users)

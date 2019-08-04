@@ -1,6 +1,6 @@
 require 'pry-byebug'
 
-class BooksView
+class BookView
   def list(books)
     puts "--------- B O O K S ---------"
     puts ""
