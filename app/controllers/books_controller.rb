@@ -7,7 +7,15 @@ class BooksController
   end
 
   def index
-    @view.list(Book.all)
+    if Book.all.empty?
+      create if @view.no_books == "A"
+    else
+      @view.list(Book.all)
+    end
+  end
+
+  def show
+
   end
 
   def create
@@ -17,11 +25,14 @@ class BooksController
   end
 
   def update
-
+    index
+    book = Book.find(@view.ask_for_id("update"))
   end
 
   def destroy
+    index
+    book = Book.find(@view.ask_for_id("delete"))
+    @view.confirm_delete == "y" ? book.destroy : @view.delete_cancelled
 
   end
-
 end

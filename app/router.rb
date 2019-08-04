@@ -20,9 +20,10 @@ class Router
     case action
     when 1 then @books_controller.index
     when 2 then @books_controller.create
-    when 3 then @books_controller.update
-    when 4 then @books_controller.destroy
-    when 5 then @running = false
+    when 3 then @books_controller.show
+    when 4 then @books_controller.update
+    when 5 then @books_controller.destroy
+    when 6 then @running = false
     end
   end
 
@@ -30,6 +31,7 @@ class Router
     [
       "List all books",
       "Add a book",
+      "View a book",
       "Edit a book's details",
       "Delete a book",
       "Exit program"
